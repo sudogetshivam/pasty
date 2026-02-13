@@ -1,0 +1,14 @@
+{
+    "name": "pasty-root",
+    "version": "1.0.0",
+    "description": "Root directory for Pasty project",
+    "scripts": {
+        "start": "echo \"Please run client and server separately\"",
+        "client": "cd client && npm run dev",
+        "server": "cd server && npm start",
+        "install-all": "cd client && npm install && cd ../server && npm install"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
