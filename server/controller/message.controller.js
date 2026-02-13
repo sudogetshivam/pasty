@@ -1,5 +1,5 @@
 import {asyncHandler} from "../utils/asyncHandler.js";
-import {apiError} from "../utils/ApiError.js";
+import {apiError} from "../utils/apiError.js";
 import {apiResponse} from "../utils/apiResponse.js"
 import { Message } from "../model/message.model.js";
 import 'dotenv/config'
