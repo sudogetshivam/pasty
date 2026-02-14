@@ -61,4 +61,36 @@ const retrieveMessage = asyncHandler(async(req,res)=>{
     )
 })
 
-export {retrieveMessage,sendMessage}
+const deleteMessage = asyncHandler(async(req,res)=>{
+  try {
+    const { code } = req.body;
+
+    if (!code) {
+      return res.status(400).json({
+        success: false,
+        error: "Code is required",
+      });
+    }
+
+    const deleted = await Message.findOneAndDelete({ code: code });
+
+    if (!deleted) {
+      return res.status(404).json({
+        success: false,
+        message: "Message not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Message deleted successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
+  }    
+})
+
+export {retrieveMessage,sendMessage,deleteMessage}
