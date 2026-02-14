@@ -1,0 +1,20 @@
+{
+  "name": "cli-pasty",
+  "version": "1.0.0",
+  "description": "Global CLI Clipboard Tool (Browser-less)",
+  "main": "index.js",
+  "bin": {
+    "pasty": "./index.js"
+  },
+  "keywords": [
+    "clipboard",
+    "cli",
+    "global clipboard",
+    "pasty"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
