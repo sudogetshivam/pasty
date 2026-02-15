@@ -93,4 +93,47 @@ const deleteMessage = asyncHandler(async(req,res)=>{
   }    
 })
 
-export {retrieveMessage,sendMessage,deleteMessage}
+const deleteAtOnceSeen = asyncHandler(async(req,res)=>{
+  try {
+    const { code } = req.body;
+
+    if (!code) {
+      return res.status(400).json({
+        success: false,
+        error: "Code is required",
+      });
+    }
+
+    const getMessage = await Message.findOne({ code: code });
+
+    if (!getMessage) {
+      return res.status(404).json({
+        success: false,
+        message: "Message not found",
+      });
+    }
+
+    const messageRetrieved = getMessage.message;
+    const deleteMsg =  await Message.findOneAndDelete({ code: code });
+
+    if (!deleteMsg) {
+      return res.status(404).json({
+        success: false,
+        message: "Something went wrong while deleting the message",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: `${messageRetrieved}`,
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
+  }    
+})
+
+export {retrieveMessage,sendMessage,deleteMessage, deleteAtOnceSeen}
