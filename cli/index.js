@@ -47,8 +47,8 @@ async function run(){
     else{
     console.log("Pasty CLI - Global Clipboard Tool");
     console.log("Usage:");
-    console.log("  clip save <message>");
-    console.log("  clip get <code>");
+    console.log("  pasty save <message>");
+    console.log("  pasty get <code>");
     }
 }
 
