@@ -9,15 +9,11 @@ const messageSchema = new Schema({
         type:String,
         required:true
     },
-    createdat:{
-        type:Date, 
-        // required:true 
-    },
-    expiresat:{
-        type:Date,
-    //    required:true 
-    }
+      expiresAt: {
+    type: Date,
+    default: null
+  }
     
-})
+},[{timestamps:true}])
 
 export const Message=mongoose.model('Message',mongoose.Schema(messageSchema))
