@@ -1,7 +1,9 @@
 #!/usr/bin/env node
-const axios = require("axios");
+import axios from "axios";
+import 'dotenv/config'
 
-const BASE_URL = "http://localhost:8000/api/auth";
+
+const BASE_URL = process.env.BASE_URL || 'http://localhost:8000/api/auth';
 
 const args = process.argv.slice(2)
 const command = args[0]
@@ -93,7 +95,7 @@ async function run() {
         console.log("Running...")
         try {
             const { default: ora } = await import('ora')
-            const spinner = ora('running...').start()
+            const spinner = ora('Thinking...').start()
 
             const { pipeline, env } = await import('@xenova/transformers');
 
@@ -104,7 +106,7 @@ async function run() {
                 dtype: 'q4'
             })
 
-            spinner.text = "thinking..."
+            spinner.text = "Generating..."
 
             const systemInstruction = `You are Pasty AI, an Elite professional technical assistant. 
 
@@ -149,11 +151,14 @@ Rules:
 
         }
     }
-    else {
+    else if (command === "help") {
         console.log("Pasty CLI - Global Clipboard Tool");
         console.log("Usage:");
         console.log("  pasty save <message>");
         console.log("  pasty get <code>");
+        console.log("  pasty saveat <code> <message>");
+        console.log("  pasty saveonce <message>");
+        console.log("  pasty ai <prompt>");
     }
 }
 
