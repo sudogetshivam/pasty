@@ -22,6 +22,14 @@ app.use(cors({
     credentials: true
 }))
 
+// Allow requests with no origin (CLI tools, curl, etc.)
+app.use((req, res, next) => {
+    if (!req.headers.origin) {
+        res.header('Access-Control-Allow-Origin', '*');
+    }
+    next();
+})
+
 app.use(express.json()) //this act as a json translator, whenever a request in json format comes to server it parses it and creates a jabascript object which can be further used in from of req.body
 // app.use(express.urlencoded({ extended: true }));
 

@@ -9,11 +9,14 @@ const messageSchema = new Schema({
         type:String,
         required:true
     },
-      expiresAt: {
-    type: Date,
-    default: null
-  }
-    
-},[{timestamps:true}])
+    isOnce: {
+        type: Boolean,
+        default: false
+    },
+    expiresAt: {
+        type: Date,
+        default: null
+    }
+}, {timestamps: true})
 
-export const Message=mongoose.model('Message',mongoose.Schema(messageSchema))
+export const Message = mongoose.model('Message', messageSchema)
