@@ -1,7 +1,8 @@
 {
   "name": "cli-pasty",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Global CLI Clipboard Tool (Browser-less)",
+  "type": "module",
   "main": "index.js",
   "bin": {
     "pasty": "./index.js"
